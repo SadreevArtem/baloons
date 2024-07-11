@@ -1,7 +1,144 @@
 export const MetaData = {
-  title: "Производство и установка лестниц Тюмень | Лестницы для дома, офиса и улицы",
-  description: "Изготавливаем и устанавливаем лестницы любой сложности: маршевые, поворотные, винтовые и другие. Лестницы для дома, коттеджа, квартиры, улицы, подвала, склада и магазина. Индивидуальный подход, качественные материалы, профессиональные мастера. Закажите лестницу своей мечты прямо сейчас!",
-}
+  title: "Barballs72! Воздушные шары в Тюмени!",
+  description: "Воздушные шары в Тюмени с доставкой можно купить в студии Шарбокс. Заказать гелиевые шарики и фигуры как подарок на день рождения и украшение праздника."
+};
+
+export const PRODUCTS = [
+  {
+    id: 1,
+    name: "Композиция 1",
+    image: "/images/products/product.jpg",
+    currentPrice: 900,
+    oldPrice: 1000,
+    isSale: false,
+    isSelection: true,
+    published: true,
+    tags: ["girl"],
+    categories: "out",
+  },
+  {
+    id: 2,
+    name: "Композиция 2",
+    image: "/images/products/product.jpg",
+    currentPrice: 900,
+    oldPrice: 1000,
+    isSale: false,
+    isSelection: true,
+    published: true,
+    tags: ["girl"],
+    categories: "out",
+  },
+  {
+    id: 3,
+    name: "Композиция 3",
+    image: "/images/products/product.jpg",
+    currentPrice: 900,
+    oldPrice: 1000,
+    isSale: false,
+    isSelection: true,
+    published: true,
+    tags: ["girl"],
+    categories: "out",
+  },
+  {
+    id: 4,
+    name: "Композиция 4",
+    image: "/images/products/product.jpg",
+    currentPrice: 900,
+    oldPrice: 1000,
+    isSale: false,
+    isSelection: true,
+    published: true,
+    tags: ["girl"],
+    categories: "out",
+  },
+  {
+    id: 5,
+    name: "Композиция 5",
+    image: "/images/products/product.jpg",
+    currentPrice: 900,
+    oldPrice: 1000,
+    isSale: false,
+    isSelection: true,
+    published: true,
+    tags: ["girl"],
+    categories: "out",
+  },
+  {
+    id: 6,
+    name: "Композиция 6",
+    image: "/images/products/product.jpg",
+    currentPrice: 900,
+    oldPrice: 1000,
+    isSale: false,
+    isSelection: true,
+    published: true,
+    tags: ["girl"],
+    categories: "out",
+  },
+  {
+    id: 7,
+    name: "Композиция 7",
+    image: "/images/products/product.jpg",
+    currentPrice: 900,
+    oldPrice: 1000,
+    isSale: false,
+    isSelection: true,
+    published: true,
+    tags: ["girl"],
+    categories: "out",
+  },
+  {
+    id: 8,
+    name: "Композиция 8",
+    image: "/images/products/product.jpg",
+    currentPrice: 900,
+    oldPrice: 1000,
+    isSale: false,
+    isSelection: true,
+    published: true,
+    tags: ["girl"],
+    categories: "out",
+  }
+];
+
+export const CATEGORIES = [
+  {
+    id: 1,
+    name: "Акции",
+    image: "images/categories/category.jpeg"
+  },
+  {
+    id: 2,
+    name: "Выписка",
+    image: "images/categories/out.jpg"
+  },
+  {
+    id: 3,
+    name: "Девочке",
+    image: "images/categories/girl.jpg"
+  },
+  {
+    id: 4,
+    name: "Мальчику",
+    image: "images/categories/boy.jpg"
+  },
+  {
+    id: 5,
+    name: "Девушке",
+    image: "images/categories/girlfriend.jpg"
+  },
+  {
+    id: 6,
+    name: "Мужчине",
+    image: "images/categories/man.jpg"
+  },
+  {
+    id: 7,
+    name: "Фотозона",
+    image: "images/categories/photozone.jpg"
+  }
+]
 
 export const accordeonItems = [
   {
@@ -16,7 +153,7 @@ export const accordeonItems = [
       "⁃ <strong>Лестницы на швеллере</strong> - прочные и надежные конструкции, подходящие для различных помещений.",
       "⁃ <strong>Лестницы на косоуре</strong> - элегантные и современные, прекрасно вписываются в любой интерьер.",
       "⁃ <strong>Винтовые лестницы</strong> - компактные и эстетичные, идеально подходят для небольших помещений.",
-      "⁃ <strong>Лестницы 'гусиный шаг'</strong> - эффективное решение для узких пространств и помещений с ограниченной высотой."
+      "⁃ <strong>Лестницы 'гусиный шаг'</strong> - эффективное решение для узких пространств и помещений с ограниченной высотой.",
     ],
   },
   {
@@ -53,7 +190,7 @@ export const reviews = [
     id: 1,
     published: true,
     content: "content",
-    text: "Прекрасно справились с установкой лестницы в нашем коттедже. Качество материалов и профессионализм на высшем уровне!",
+    text: "Хочу выразить огромную благодарность команде за великолепное украшение нашего праздника воздушными шарами! Все было выполнено с невероятным вкусом и креативностью. Гости были в восторге, а дети не могли оторваться от ярких композиций. Отличная работа и очень профессиональный подход!",
     rating: 5,
     user: {
       work: "домохозяйка",
@@ -66,7 +203,7 @@ export const reviews = [
     id: 2,
     published: true,
     content: "content",
-    text: "Гипнотерапия оказалась для меня настоящим открытием. Сеансы помогли мне избавиться от давней зависимости, и теперь я чувствую себя свободным и полным сил.",
+    text: "Мы заказывали украшение шарами на день рождения сына, и результат превзошел все ожидания! Цветовая гамма, композиции и внимание к деталям - все было на высшем уровне. Шары придали мероприятию особую атмосферу праздника и радости. Огромное спасибо за прекрасное настроение!",
     rating: 5,
     user: {
       work: "предприниматель",
@@ -79,7 +216,7 @@ export const reviews = [
     id: 3,
     published: true,
     content: "content",
-    text: "Системные расстановки помогли мне наладить отношения в семье и понять корни многих проблем. Настоящий профессионал своего дела, который помог увидеть и решить глубинные вопросы",
+    text: "Потрясающая работа! Украшение воздушными шарами стало настоящим украшением нашего юбилея. Шары были подобраны в идеальной цветовой гамме, а композиции выглядели очень стильно и элегантно. Отдельное спасибо за оперативность и доброжелательность в общении. Рекомендую всем!",
     rating: 5,
     user: {
       work: "домохозяйка",
@@ -92,7 +229,7 @@ export const reviews = [
     id: 4,
     published: true,
     content: "content",
-    text: "Семейная терапия с этим специалистом спасла наш брак. Мы научились лучше понимать друг друга и находить компромиссы, что сделало нашу жизнь намного гармоничнее.",
+    text: "Заказывали украшение шарами для свадьбы, и это было лучшее решение! Каждая арка, каждая гирлянда была выполнена с такой любовью и вниманием к деталям. Гости не переставали фотографироваться на фоне этих великолепных композиций. Огромное спасибо за сказочную атмосферу нашего праздника!",
     rating: 5,
     user: {
       work: "домохозяйка",
@@ -105,24 +242,11 @@ export const reviews = [
     id: 5,
     published: true,
     content: "content",
-    text: "Мой ребенок стал гораздо спокойнее и счастливее после работы с этим психологом. Очень благодарна за помощь и внимательное отношение к ребенку, что дало ощутимые положительные результаты.",
+    text: "Спасибо большое за ваше искусство и профессионализм! Украшение воздушными шарами сделало наше мероприятие незабываемым. Особенно порадовало то, как вы учли все наши пожелания и предложили интересные решения. Шары были потрясающими, а праздник - ярким и радостным. Обязательно будем обращаться к вам снова!",
     rating: 5,
     user: {
       work: "домохозяйка",
       image: "/images/avatar5.jpeg",
-      lastName: "Иванова",
-      firstName: "Дарья",
-    },
-  },
-  {
-    id: 6,
-    published: true,
-    content: "content",
-    text: "Потрясающий специалист! Очень помог разобраться с моими тревогами и научил, как с ними справляться. Теперь я чувствую себя намного увереннее и спокойнее, что положительно сказывается на моей повседневной жизни",
-    rating: 5,
-    user: {
-      work: "домохозяйка",
-      image: "/images/avatar1.jpeg",
       lastName: "Иванова",
       firstName: "Дарья",
     },

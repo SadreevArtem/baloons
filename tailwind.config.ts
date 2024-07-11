@@ -23,10 +23,11 @@ const config: Config = {
         "sans-inter": ["var(--font-inter)", ...fontFamily.sans],
       },
       colors: {
-        primary: "",
+        primary: "#9d8c98",
         link: "#cbcbc4",
         secondary: "linear-gradient(28deg,#e0c394,#f9deaf 50%,#e0c394)",
         hover: "#bda070",
+        bgColor: "rgb(247, 247, 247)"
       },
       fontSize: {
         xs: ["12px", "16px"],
@@ -48,6 +49,8 @@ const config: Config = {
       },
       boxShadow: {
         base: "2px 4px 12px 0px rgba(33, 33, 33, 0.05)",
+        card: "0px 0px 10px rgba(0,0,0,0.1)",
+        cardHover: "0px 10px 5px 0px rgba(0, 0, 0, 0.10) !important",
       },
       borderRadius: {
         1: "4px",

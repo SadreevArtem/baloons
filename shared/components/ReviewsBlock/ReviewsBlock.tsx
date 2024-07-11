@@ -39,9 +39,9 @@ export const ReviewsBlock: React.FC<Props> = ({
     return null;
   }
   return (
-    <div className={clsx("", className)}>
+    <div className={clsx("bg-[#d1baba] py-4 opacity-80", className)}>
       <div className='container flex items-center justify-between mb-6 md:mb-8'>
-        <h2 className='text-lg md:text-xl lg:text-2xl'>{title}</h2>
+        <h2 className='text-lg md:text-xl text-white lg:text-2xl'>{title}</h2>
 
         <div className='flex gap-6 max-md:hidden'>
           <SwiperButton ref={setPrevEl} type='prev' />

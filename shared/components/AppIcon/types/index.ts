@@ -6,4 +6,7 @@ export type IconType =
   | "close"
   | "chevron-right"
   | "social-youtube"
-  | "phone";
+  | "phone"
+  | "search"
+  | "favorite"
+  | "cart";

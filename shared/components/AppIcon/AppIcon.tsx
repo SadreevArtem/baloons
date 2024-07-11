@@ -39,6 +39,15 @@ const ChevronRight = dynamic(
     ssr: false
   }
 );
+const Search = dynamic(() => import("./components/Search").then((module) => module.Search), {
+  ssr: false
+});
+const Favorite = dynamic(() => import("./components/Favorite").then((module) => module.Favorite), {
+  ssr: false
+});
+const Cart = dynamic(() => import("./components/Cart").then((module) => module.Cart), {
+  ssr: false
+});
 
 type Props = {
   type: IconType;
@@ -55,7 +64,9 @@ const icons: Record<IconType, (className: string) => ReactNode> = {
   close: (className) => <Close className={className} />,
   phone: (className) => <Phone className={className} />,
   "chevron-right": (className) => <ChevronRight className={className} />,
-  
+  search: (className) => <Search className={className} />,
+  favorite: (className) => <Favorite className={className} />,
+  cart: (className) => <Cart className={className} />,
 };
 
 export const AppIcon: React.FC<Props> = ({ type, className = "" }) => {

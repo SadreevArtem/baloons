@@ -1,13 +1,13 @@
-import { Arimo, Bitter, Fira_Sans, Inter } from "next/font/google";
+import { Poiret_One } from "next/font/google";
 import { Author } from "@/shared/components/Author/Author";
-import { AppAccordionGroup } from "@/shared/components/AppAccordionGroup/AppAccordionGroup";
-import { accordeonItems, files, MetaData, reviews } from "@/shared/static";
-import { ReviewsBlock } from "@/shared/components/ReviewsBlock/ReviewsBlock";
-import { Contacts } from "@/shared/components/Contacts/Contacts";
+import { MetaData, reviews } from "@/shared/static";
+// import { ReviewsBlock } from "@/shared/components/ReviewsBlock/ReviewsBlock";
 import { AppHead } from "@/shared/components/AppHead";
-import { ImageGallery } from "@/shared/components/ImageGallery";
+import { ReviewsBlock } from "@/shared/components/ReviewsBlock/ReviewsBlock";
+import { Categories } from "@/shared/components/Categories";
+import { Selections } from "@/shared/components/Selections";
 
-const inter = Bitter({ subsets: ['latin'] });
+export const inter = Poiret_One({weight: "400", subsets: ['cyrillic']});
 
 export default function Home() {
   return (
@@ -17,25 +17,13 @@ export default function Home() {
       <div className={`flex flex-col justify-between ${inter.className}`}>
         <Author />
         <div className="md:mt-[60px] mt-8">
-          <AppAccordionGroup
-            className="container"
-            items={accordeonItems}
-            accordionContentSlot={(item) => (
-              <ul>
-                {item.value.map((value) => (
-                  <li key={value}>
-                    <div dangerouslySetInnerHTML={{ __html: value ?? "" }} />
-                  </li>
-                ))}
-              </ul>
-            )}
-          />
+          <Categories />
         </div>
-        <div id="gallery" className="mt-[60px]">
-          <ImageGallery items={files} className="py-0 pt-4" />
+        <div className="md:mt-[60px] mt-8">
+          <Selections />
         </div>
         <div id="contacts" className="mt-[60px]">
-          <Contacts />
+          <ReviewsBlock items={reviews} />
         </div>
       </div>
     </>

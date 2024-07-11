@@ -1,29 +1,25 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Socials } from "../Socials/Socials";
+import { inter } from "@/pages";
 
 export const Footer: React.FC = () => {
   return (
     <>
-      <div className="w-full h-[4px] bg-white mt-4 md:mt-6 opacity-50" />
-      <footer className="w-full flex flex-col  bg-[#333] py-4">
-        <div className="container">
-          <div className="flex justify-between items-center mb-4 md:mb-6">
+      <footer className={`w-full flex flex-col py-4 ${inter.className} mt-[60px]`}>
+        <div className="container grid grid-cols-4 gap-8">
+          <div className="flex flex-col gap-6 items-center mb-4 md:mb-6">
             <div className="relative flex flex-col md:flex-row gap-6 items-center">
-              <Link
-                href="/"
-                className="relative block w-[50px] h-[50px] shrink-0"
-              >
-                <Image
-                  src="/logo.jpg"
-                  fill
-                  alt="Логотип"
-                  className="w-[30px] h-[30px] rounded-full"
-                />
+              <Link href="/" className="relative block shrink-0">
+                <div className="flex flex-col items-center">
+                  <span className="text-2xl text-primary font-extrabold">
+                    Barballs72
+                  </span>
+                  <span className="text-[10px] text-primary uppercase">
+                    студия воздушного декора
+                  </span>
+                </div>
               </Link>
-
-              <h2 className="text-link">{'МПК "Русь"'}</h2>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Socials
@@ -40,13 +36,44 @@ export const Footer: React.FC = () => {
                 ]}
               />
               <Link
-                href={`tel:+79829895209`}
-                className="text-link w-fit hover:text-hover"
+                href={`tel:+79229998877`}
+                className="text-primary w-fit hover:text-hover"
               >
-                +7 (982) 989 52 09
+                +7 (922) 222 22 22
               </Link>
-              <p className="text-link w-fit hover:text-hover">г. Тюмень ул.Камчатская 181</p>
+              <p className="text-primary w-fit hover:text-hover">
+                г. Тюмень ул.Тюменская 999
+              </p>
             </div>
+          </div>
+          <div className="text-primary flex flex-col">
+            <h5 className="font-extrabold mb-3">ДЛЯ КОГО</h5>
+            <span>Девочкам</span>
+            <span>Мальчикам</span>
+            <span>Девушкам</span>
+            <span>Мужчинам</span>
+            <span>Девичник</span>
+            <span>На выписку</span>
+            <span>Gender part</span>
+          </div>
+          <div className="text-primary flex  flex-col">
+            <h5 className="font-extrabold uppercase mb-3">Категории шаров</h5>
+            <span>Фотозоны</span>
+            <span>Латексные шары</span>
+            <span>Фигуры</span>
+            <span>Цифры</span>
+            <span>Звезды</span>
+            <span>Сердца</span>
+            <span>Связки шаров</span>
+            <span>Коробки-сюрпризы</span>
+            <span>Ходячие фигуры</span>
+          </div>
+          <div className="text-primary flex flex-col">
+            <h5 className="font-extrabold uppercase mb-3">Информация</h5>
+            <span>О нас</span>
+            <span>Доставка и оплата</span>
+            <span>Акции и скидки</span>
+            <span>Полезная информация</span>
           </div>
         </div>
       </footer>
