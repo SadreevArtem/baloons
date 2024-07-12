@@ -15,7 +15,12 @@ export default function Home() {
       <AppHead title={MetaData.title} description={MetaData.description} />
 
       <div className={`flex flex-col justify-between ${inter.className}`}>
-        <Author />
+        <Author
+          images={[
+            { url: "/images/banner.jpg" },
+            { url: "/images/banner2.jpg" },
+          ]}
+        />
         <div className="md:mt-[60px] mt-8">
           <Categories />
         </div>
