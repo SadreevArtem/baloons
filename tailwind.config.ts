@@ -27,7 +27,8 @@ const config: Config = {
         link: "#cbcbc4",
         secondary: "linear-gradient(28deg,#e0c394,#f9deaf 50%,#e0c394)",
         hover: "#bda070",
-        bgColor: "rgb(247, 247, 247)"
+        bgColor: "rgb(247, 247, 247)",
+        bgOpacity: "rgba(157, 140, 152, 0.2)"
       },
       fontSize: {
         xs: ["12px", "16px"],

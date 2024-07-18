@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { scrolltoHash } from "@/shared/lib";
 import { AppIcon } from "../AppIcon";
 import { inter } from "@/pages";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { Hamburger } from "../Hamburger";
+import { HEADER_MENU } from "../Hamburger/static";
 
 export const Header: React.FC = () => {
+  const [hamburgerActive, setHamburgerActive] = useState(false);
+  const onOpen = () => {
+    setHamburgerActive(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const onClose = () => {
+    setHamburgerActive(false);
+    document.body.style.removeProperty("overflow");
+  };
   return (
     <header
       className={`${inter.className} opacity-75 md:p-4 p-3 header-scroll fixed top-0 z-10 bg-white w-full`}
     >
-      <div
-        className={
-          "container flex items-center justify-between min-h-6"
-        }
-      >
+      <div className={"container flex items-center justify-between min-h-6"}>
         <Link href="/" className="relative block shrink-0">
           <div className="flex flex-col items-center">
             <span className="md:text-2xl text-xl text-primary font-extrabold">
@@ -96,6 +104,15 @@ export const Header: React.FC = () => {
                   </MenuItem>
                 </MenuItems>
               </Menu>
+            </li>
+            <li className={`self-center ml-4 ${inter.className} md:hidden`}>
+              <Hamburger
+                className="md:hidden"
+                menu={HEADER_MENU}
+                active={hamburgerActive}
+                onOpen={onOpen}
+                onClose={onClose}
+              />
             </li>
           </ul>
         </nav>
