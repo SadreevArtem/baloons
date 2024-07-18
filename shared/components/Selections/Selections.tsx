@@ -9,7 +9,7 @@ export const Selections: React.FC = () => {
   return (
     <>
       <section className={`w-full flex flex-col py-4 ${inter.className} bg-[#f7f7f7]`}>
-        <h3 className="self-center text-primary text-5xl font-extrabold mb-6">Вам точно понравится</h3>
+        <h3 className="container self-center text-center text-primary md:text-5xl text-2xl font-extrabold mb-6">Вам точно понравится</h3>
         <div className="container py-4 grid md:grid-cols-4 grid-cols-2 gap-8">
             {PRODUCTS.map((product)=> <ProductCard item={product} key={product.name}/>)}
         </div>
