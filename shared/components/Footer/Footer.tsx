@@ -6,8 +6,8 @@ import { inter } from "@/pages";
 export const Footer: React.FC = () => {
   return (
     <>
-      <footer className={`w-full flex flex-col py-4 ${inter.className} mt-[60px]`}>
-        <div className="container grid md:grid-cols-4 gap-8">
+      <footer className={`w-full flex flex-col py-4 ${inter.className} md:mt-[60px] mt-4`}>
+        <div className="container grid md:grid-cols-4 md:gap-8 gap-4">
           <div className="flex flex-col gap-6 md:items-center items-start mb-4 md:mb-6">
             <div className="relative flex flex-col md:flex-row gap-6 items-center">
               <Link href="/" className="relative block shrink-0">

@@ -8,7 +8,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 export const Header: React.FC = () => {
   return (
     <header
-      className={`${inter.className} opacity-75 md:p-4 p-2 header-scroll fixed top-0 z-10 bg-white w-full`}
+      className={`${inter.className} opacity-75 md:p-4 p-3 header-scroll fixed top-0 z-10 bg-white w-full`}
     >
       <div
         className={

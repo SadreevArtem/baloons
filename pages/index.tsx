@@ -21,13 +21,13 @@ export default function Home() {
             { url: "/images/banner2.jpg" },
           ]}
         />
-        <div className="md:mt-[60px] mt-8">
+        <div className="md:mt-[60px] mt-4">
           <Categories />
         </div>
-        <div className="md:mt-[60px] mt-8">
+        <div className="md:mt-[60px] mt-4">
           <Selections />
         </div>
-        <div id="contacts" className="mt-[60px]">
+        <div id="contacts" className="md:mt-[60px] mt-4">
           <ReviewsBlock items={reviews} />
         </div>
       </div>
