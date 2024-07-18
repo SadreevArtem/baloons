@@ -12,9 +12,7 @@ type Props = {
 
 export const HamburgerMenu: React.FC<Props> = ({ menu, onClose, className = "" }) => {
   const { asPath } = useRouter();
-  const paths = asPath.split("/");
-  console.log(paths);
-  
+  const paths = asPath.split("/");  
   const listItemClassName = "mb-1 last:mb-0 py-2 px-4 rounded-2";
 
   return (
@@ -28,7 +26,7 @@ export const HamburgerMenu: React.FC<Props> = ({ menu, onClose, className = "" }
                 "bg-bgOpacity": paths[1] === ""
               })}
             >
-              <Link href='/' className='block w-full text-base text-primary' onClick={onClose}>
+              <Link href='/' className='block w-full text-lg text-primary font-extrabold' onClick={onClose}>
                 Главная
               </Link>
             </li>
@@ -39,7 +37,7 @@ export const HamburgerMenu: React.FC<Props> = ({ menu, onClose, className = "" }
                   "bg-bgOpacity": asPath.includes(`${item.href}`)
                 })}
               >
-                <Link href={item.href} className={clsx("block w-full text-base text-primary")} onClick={onClose}>
+                <Link href={item.href} className={clsx("block w-full text-lg text-primary font-extrabold")} onClick={onClose}>
                   {item.value}
                 </Link>
               </li>

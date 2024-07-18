@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
       <div className={"container flex items-center justify-between min-h-6"}>
         <Link href="/" className="relative block shrink-0">
           <div className="flex flex-col items-center">
-            <span className="md:text-2xl text-xl text-primary font-extrabold">
+            <span className="md:text-2xl text-xl-2 text-primary font-extrabold">
               Barballs72
             </span>
             <span className="md:text-[10px] text-[8px] text-primary uppercase">
