@@ -38,7 +38,7 @@ export const Author: FC<BannerProps> = ({ images }) => {
               className="top-0 left-0 right-0 bottom-0"
             />
           </div> */}
-        <div className="h-[80vh]">
+        <div className="h-[60vh]">
           <SwitchTransition mode="in-out">
             <CSSTransition
               nodeRef={imageRef}

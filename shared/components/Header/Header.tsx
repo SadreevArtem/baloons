@@ -8,25 +8,25 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 export const Header: React.FC = () => {
   return (
     <header
-      className={`${inter.className} opacity-75 p-4 header-scroll fixed top-0 z-10 bg-white w-full`}
+      className={`${inter.className} opacity-75 md:p-4 p-2 header-scroll fixed top-0 z-10 bg-white w-full`}
     >
       <div
         className={
-          "container flex items-center justify-between min-h-6 max-md:hidden"
+          "container flex items-center justify-between min-h-6"
         }
       >
         <Link href="/" className="relative block shrink-0">
           <div className="flex flex-col items-center">
-            <span className="text-2xl text-primary font-extrabold">
+            <span className="md:text-2xl text-xl text-primary font-extrabold">
               Barballs72
             </span>
-            <span className="text-[10px] text-primary uppercase">
+            <span className="md:text-[10px] text-[8px] text-primary uppercase">
               студия воздушного декора
             </span>
           </div>
         </Link>
         <nav className="flex items-center gap-4">
-          <ul className="flex gap-4">
+          <ul className="flex md:gap-4 gap-2">
             <li>
               <div
                 className="header-link"
@@ -51,7 +51,7 @@ export const Header: React.FC = () => {
                 <AppIcon type="cart" />
               </div>
             </li>
-            <li className={`self-center ml-6 ${inter.className}`}>
+            <li className={`self-center ml-6 ${inter.className} max-md:hidden`}>
               <Menu>
                 <MenuButton className="flex items-center rounded-md shadow-inner shadow-white/10 focus:outline-none  data-[focus]:outline-1 data-[focus]:outline-white">
                   <div className="flex flex-col gap-1 ">
@@ -99,16 +99,6 @@ export const Header: React.FC = () => {
             </li>
           </ul>
         </nav>
-      </div>
-      <div className="md:hidden flex items-center flex-col text-lg gap-4 w-full">
-        <p className="block">{'МПК "Русь"'}</p>
-        <Link
-          href={`tel:+79829895209`}
-          className="w-fit bg-[#bda070] p-3 rounded-[32px] border-primary"
-        >
-          <AppIcon type="phone" className="inline pr-2 w-8 h-8" />
-          {"+7 (982) 989 52 09"}
-        </Link>
       </div>
     </header>
   );

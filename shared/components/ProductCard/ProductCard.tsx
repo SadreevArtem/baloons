@@ -13,7 +13,7 @@ type Props ={
 export const ProductCard: React.FC<Props> = ({item}) => {
   return (
     <>
-      <article className="shadow-card hover:shadow-cardHover rounded-[10px] flex flex-col gap-4 items-center shrink-0 bg-[#fafafa] w-[220px] h-[468px]">
+      <article className="shadow-card hover:shadow-cardHover rounded-[10px] flex flex-col gap-4 items-center shrink-0 bg-[#fafafa] md:w-[220px] md:h-[468px]">
         <Image
           style={{ objectFit: "cover" }}
           alt={item.name}

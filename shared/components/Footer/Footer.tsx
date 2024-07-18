@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
   return (
     <>
       <footer className={`w-full flex flex-col py-4 ${inter.className} mt-[60px]`}>
-        <div className="container grid grid-cols-4 gap-8">
+        <div className="container grid md:grid-cols-4 gap-8">
           <div className="flex flex-col gap-6 items-center mb-4 md:mb-6">
             <div className="relative flex flex-col md:flex-row gap-6 items-center">
               <Link href="/" className="relative block shrink-0">
