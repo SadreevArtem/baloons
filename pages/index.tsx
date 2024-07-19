@@ -1,7 +1,6 @@
 import { Poiret_One } from "next/font/google";
 import { Author } from "@/shared/components/Author/Author";
 import { MetaData, reviews } from "@/shared/static";
-// import { ReviewsBlock } from "@/shared/components/ReviewsBlock/ReviewsBlock";
 import { AppHead } from "@/shared/components/AppHead";
 import { ReviewsBlock } from "@/shared/components/ReviewsBlock/ReviewsBlock";
 import { Categories } from "@/shared/components/Categories";
@@ -25,7 +24,7 @@ export default function Home() {
           <Categories />
         </div>
         <div className="md:mt-[60px] mt-4">
-          <Selections />
+          <Selections title="Вам точно понравится"/>
         </div>
         <div id="contacts" className="md:mt-[60px] mt-4">
           <ReviewsBlock items={reviews} />

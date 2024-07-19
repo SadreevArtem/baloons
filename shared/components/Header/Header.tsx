@@ -44,20 +44,20 @@ export const Header: React.FC = () => {
               </div>
             </li>
             <li>
-              <div
+              <Link
                 className="header-link"
-                onClick={() => scrolltoHash("gallery")}
+                href="/favorite"
               >
                 <AppIcon type="favorite" />
-              </div>
+              </Link>
             </li>
             <li>
-              <div
+              <Link
                 className="header-link"
-                onClick={() => scrolltoHash("contacts")}
+                href="/cart"
               >
                 <AppIcon type="cart" />
-              </div>
+              </Link>
             </li>
             <li className={`self-center ml-6 ${inter.className} max-md:hidden`}>
               <Menu>
