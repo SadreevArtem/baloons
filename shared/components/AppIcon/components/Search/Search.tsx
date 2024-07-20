@@ -21,7 +21,7 @@ export const Search: React.FC<Props> = ({ className = "" }) => (
       r="7.69888"
       transform="rotate(47.1675 10.1224 10.8801)"
       stroke="#9d8c98"
-      stroke-width="2"
+      strokeWidth="2"
     ></circle>
     <line
       x1="16.4142"
@@ -29,8 +29,8 @@ export const Search: React.FC<Props> = ({ className = "" }) => (
       x2="20.3033"
       y2="20.8891"
       stroke="#9d8c98"
-      stroke-width="2"
-      stroke-linecap="round"
+      strokeWidth="2"
+      strokeLinecap="round"
     ></line>
   </svg>
 );

@@ -140,6 +140,44 @@ export const CATEGORIES = [
   }
 ]
 
+export const CATALOG = [
+  {
+    id: 1,
+    name: "Акции",
+    href: "/sales",
+  },
+  {
+    id: 2,
+    name: "Выписка",
+    href: "/out",
+  },
+  {
+    id: 3,
+    name: "Девочке",
+    href: "/girls",
+  },
+  {
+    id: 4,
+    name: "Мальчику",
+    href: "/boys",
+  },
+  {
+    id: 5,
+    name: "Девушке",
+    href: "/girlfriends",
+  },
+  {
+    id: 6,
+    name: "Мужчине",
+    href: "/men",
+  },
+  {
+    id: 7,
+    name: "Фотозона",
+    href: "/photozones",
+  }
+];
+
 export const accordeonItems = [
   {
     id: 1,

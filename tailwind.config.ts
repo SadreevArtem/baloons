@@ -52,6 +52,7 @@ const config: Config = {
         base: "2px 4px 12px 0px rgba(33, 33, 33, 0.05)",
         card: "0px 0px 10px rgba(0,0,0,0.1)",
         cardHover: "0px 10px 5px 0px rgba(0, 0, 0, 0.10) !important",
+        sticker: "5px 5px 7px rgba(33, 33, 33, 7)",
       },
       borderRadius: {
         1: "4px",
