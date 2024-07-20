@@ -1,12 +1,5 @@
 .wrapper {
-  @media not all and (min-resolution:.001dpcm)  {
-
-    
-
-        margin-bottom: 100px;
-
-    
-}
+  
   ul li:nth-child(even) a {  
     transform:rotate(4deg);  
     position:relative;  
