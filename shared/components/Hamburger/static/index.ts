@@ -4,12 +4,16 @@ export type HeaderMenuItem = {
   };
 
 export const HEADER_MENU: HeaderMenuItem[] = [
-    {
-      value: "Выписка",
-      href: "/extract"
-    },
-    {
-      value: "Девочке",
-      href: "/girls"
-    },
-  ];
+  {
+    value: "Каталог",
+    href: "/catalog",
+  },
+  {
+    value: "Выписка",
+    href: "/extract",
+  },
+  {
+    value: "Девочке",
+    href: "/girls",
+  },
+];

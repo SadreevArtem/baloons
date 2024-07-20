@@ -6,6 +6,7 @@ import { inter } from "@/pages";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { Hamburger } from "../Hamburger";
 import { HEADER_MENU } from "../Hamburger/static";
+import clsx from "clsx";
 
 export const Header: React.FC = () => {
   const [hamburgerActive, setHamburgerActive] = useState(false);
@@ -44,18 +45,12 @@ export const Header: React.FC = () => {
               </div>
             </li>
             <li>
-              <Link
-                className="header-link"
-                href="/favorite"
-              >
+              <Link className="header-link" href="/favorite">
                 <AppIcon type="favorite" />
               </Link>
             </li>
             <li>
-              <Link
-                className="header-link"
-                href="/cart"
-              >
+              <Link className="header-link" href="/cart">
                 <AppIcon type="cart" />
               </Link>
             </li>
@@ -75,33 +70,25 @@ export const Header: React.FC = () => {
                   className="w-55 mt-10 origin-top-right rounded-xl border border-white/5 opacity-75 bg-bgColor p-1 text-sm/6 transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0 text-primary"
                 >
                   <MenuItem>
-                    <button
-                      className={`group text-lg flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10" ${inter.className}`}
+                    <Link
+                      href="/"
+                      className={`group text-lg flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10 ${inter.className}`}
+                      onClick={onClose}
                     >
                       Главная
-                    </button>
+                    </Link>
                   </MenuItem>
-                  <MenuItem>
-                    <button
-                      className={`group text-lg flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10" ${inter.className}`}
-                    >
-                      О нас
-                    </button>
-                  </MenuItem>
-                  <MenuItem>
-                    <button
-                      className={`group text-lg flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10" ${inter.className}`}
-                    >
-                      Акции и скидки
-                    </button>
-                  </MenuItem>
-                  <MenuItem>
-                    <button
-                      className={`group text-lg flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10" ${inter.className}`}
-                    >
-                      Доставка и оплата
-                    </button>
-                  </MenuItem>
+                  {HEADER_MENU.map((item) => (
+                    <MenuItem key={item.value}>
+                      <Link
+                        href={item.href}
+                        className={`group text-lg flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10 ${inter.className}`}
+                        onClick={onClose}
+                      >
+                        {item.value}
+                      </Link>
+                    </MenuItem>
+                  ))}
                 </MenuItems>
               </Menu>
             </li>
