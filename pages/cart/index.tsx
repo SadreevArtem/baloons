@@ -1,11 +1,13 @@
 import { Poiret_One } from "next/font/google";
 import { AppHead } from "@/shared/components/AppHead";
 import { CartComponent } from "@/shared/components/Cart";
+import { BaseLayout } from "@/layouts/BaseLayout/BaseLayout";
+import { ReactElement } from "react";
 ;
 
 export const inter = Poiret_One({weight: "400", subsets: ['cyrillic']});
 
-export default function Cart() {
+const Cart = () => {
   return (
     <>
       <AppHead title='Корзина' description="" />
@@ -16,4 +18,15 @@ export default function Cart() {
       </div>
     </>
   );
+};
+
+Cart.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <BaseLayout>
+      {page}
+    </BaseLayout>
+  )
 }
+
+
+export default Cart;

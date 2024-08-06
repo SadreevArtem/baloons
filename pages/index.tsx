@@ -5,10 +5,12 @@ import { AppHead } from "@/shared/components/AppHead";
 import { ReviewsBlock } from "@/shared/components/ReviewsBlock/ReviewsBlock";
 import { Categories } from "@/shared/components/Categories";
 import { Selections } from "@/shared/components/Selections";
+import { ReactElement } from "react";
+import { BaseLayout } from "@/layouts/BaseLayout/BaseLayout";
 
 export const inter = Poiret_One({weight: "400", subsets: ['cyrillic']});
 
-export default function Home() {
+const Home = ()=> {
   return (
     <>
       <AppHead title={MetaData.title} description={MetaData.description} />
@@ -33,3 +35,14 @@ export default function Home() {
     </>
   );
 }
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <BaseLayout>
+      {page}
+    </BaseLayout>
+  )
+}
+
+
+export default Home;

@@ -1,10 +1,12 @@
 import { Poiret_One } from "next/font/google";
 import { AppHead } from "@/shared/components/AppHead";import { CatalogComponent } from "@/shared/components/CatalogComponent";
+import { BaseLayout } from "@/layouts/BaseLayout/BaseLayout";
+import { ReactElement } from "react";
 ;
 
 export const inter = Poiret_One({weight: "400", subsets: ['cyrillic']});
 
-export default function Catalog() {
+const Catalog = ()=> {
   return (
     <>
       <AppHead title='Избраное' description="" />
@@ -15,4 +17,15 @@ export default function Catalog() {
       </div>
     </>
   );
+};
+
+Catalog.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <BaseLayout>
+      {page}
+    </BaseLayout>
+  )
 }
+
+
+export default Catalog;
