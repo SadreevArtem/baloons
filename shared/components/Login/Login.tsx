@@ -4,6 +4,7 @@ import { TextField } from "@mui/material";
 import { useMutation } from "react-query";
 import { api } from "@/shared/api/api";
 import { useAuthStore } from "@/shared/stores/auth";
+import Link from "next/link";
 
 
 type Inputs = {
@@ -25,7 +26,7 @@ export const Login: React.FC = () => {
       const token = response.access_token;
       auth(token);
     },
-    onError: (error) => console.error(error),
+    onError: () => window.alert("Ошибка авторизации"),
   })
   const onSubmit: SubmitHandler<Inputs> = (data) => mutation.mutate(data);
 
@@ -51,6 +52,7 @@ export const Login: React.FC = () => {
           >
             Войти
           </button>
+          <Link className="text-center underline" href='/'>Вернуться на главную</Link>
         </form>
       </div>
     </>
