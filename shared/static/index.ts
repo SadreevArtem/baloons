@@ -1,9 +1,11 @@
+import { Product } from "../types";
+
 export const MetaData = {
   title: "Barballs72! Воздушные шары в Тюмени!",
   description: "Воздушные шары в Тюмени с доставкой можно купить в студии Шарбокс. Заказать гелиевые шарики и фигуры как подарок на день рождения и украшение праздника."
 };
 
-export const PRODUCTS = [
+export const PRODUCTS: Product[] = [
   {
     id: 1,
     name: "Композиция 1",

@@ -3,6 +3,7 @@ import { menuAdmin } from "./static";
 import { useState } from "react";
 import { Button } from "../Button";
 import { useAuthStore } from "@/shared/stores/auth";
+import { Products } from "../Products/Products";
 
 type Props = {
   title: string;
@@ -31,7 +32,7 @@ export const AdminPanel: React.FC<Props> = ({title, className=""})=> {
               ))}
             </ul>
           </div>
-          <div>{currentMenu}</div>
+          <div className="w-full">{currentMenu === "products" && <Products />}</div>
         </div>
       </div>
     );
