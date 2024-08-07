@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Button } from "../Button";
 import { Tabs } from "./components/Tabs/Tabs";
 import { CategoryName } from "./static";
-import { useQuery } from "react-query";
 import { api } from "@/shared/api/api";
 import { Product } from "@/shared/types";
+import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 
 
 
@@ -13,21 +14,21 @@ export const Products: React.FC = () => {
 
    const [tab, setTab]= useState<CategoryName>("all");
    const getProducts = () => api.getProducts(tab);
-   const {data: products, isLoading} = useQuery<Product[]>(["products", tab], getProducts, {enabled: !!tab});
+   const {data: products = [], isLoading} = useQuery<Product[]>({queryKey:['products', tab], queryFn: getProducts});
    console.log(products);
    
 
   return (
     <section className="flex flex-col w-full">
-      <div className="flex">
+      <div className="flex mb-2">
         <Button className="ml-auto w-auto px-3" title="Добавить новый" />
       </div>
       <Tabs setTab={setTab} currentTab={tab} />
-      {!isLoading && <div className="mt-2">
-        <ul>
-           {products?.map((item) => <li key={item.id}>{item.name}</li>)}
+      {!isLoading ? <div className="mt-2">
+        <ul className="flex flex-col gap-2 bg-gray-200 rounded-2 p-3">
+           {products?.map((item) => <li key={item.id}><Link className="text-blue-500" href={`/admin/product/${item.id}`}>{item.name}</Link></li>)}
         </ul>
-      </div>}
+      </div>: <div>Загрузка...</div>}
     </section>
   );
 };

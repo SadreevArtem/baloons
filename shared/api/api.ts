@@ -14,13 +14,24 @@ class API {
       body: JSON.stringify(input),
     });
   getProducts = (category: CategoryName) => {
-    console.log(category);
-    
     return fetch(
       `${this.baseUrl}/products/category/${category}`
     )
       .then((res) => res.json())
-      .then((data) => data.products);
+      .then((data) => {
+        return data;
+      });
+  }
+  getProductById = (id: number) => {
+    return fetch(
+      `${this.baseUrl}/products/${id}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        
+        return data;
+      });
   }
 }
 

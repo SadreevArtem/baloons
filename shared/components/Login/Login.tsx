@@ -1,7 +1,7 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { api } from "@/shared/api/api";
 import { useAuthStore } from "@/shared/stores/auth";
 import Link from "next/link";
@@ -20,15 +20,16 @@ export const Login: React.FC = () => {
     formState: { errors },
   } = useForm<Inputs>()
   const auth = useAuthStore((state) => state.auth);
-  const mutation = useMutation(api.signInRequest, {
-    onSuccess: async (data) => {
+  const mutation = useMutation( {
+    mutationFn:api.signInRequest,
+    onSuccess: async (data: any) => {
       const response = await data.json();
       const token = response.access_token;
       auth(token);
     },
     onError: () => window.alert("Ошибка авторизации"),
   })
-  const onSubmit: SubmitHandler<Inputs> = (data) => mutation.mutate(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => mutation.mutate(data as Inputs);
 
   return (
     <>
