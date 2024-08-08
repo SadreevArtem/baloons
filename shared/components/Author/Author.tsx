@@ -1,8 +1,7 @@
-import clsx from "clsx";
 import Image from "next/image";
 import { FC, useCallback, useEffect, useRef, useState } from "react";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
-import { Button } from "../Button";
+
 
 type BannerProps = {
   images: {url: string}[];

@@ -9,4 +9,6 @@ export type IconType =
   | "phone"
   | "search"
   | "favorite"
-  | "cart";
+  | "cart"
+  |'password-hide'
+  | 'password-show';

@@ -1,10 +1,11 @@
 import React from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
 import { api } from "@/shared/api/api";
 import { useAuthStore } from "@/shared/stores/auth";
 import Link from "next/link";
+import { PasswordTextField } from "../PasswordTextField/PasswordTextField";
 
 
 type Inputs = {
@@ -17,6 +18,7 @@ export const Login: React.FC = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<Inputs>()
   const auth = useAuthStore((state) => state.auth);
@@ -39,11 +41,25 @@ export const Login: React.FC = () => {
           className="md:w-[30%] py-4 flex flex-col md:gap-6 gap-4"
         >
           <TextField variant="filled" label="Имя" {...register("username")} />
-          <TextField
+          <Controller
+          name='password'
+          control={control}
+          render={({ field }) => (
+            <PasswordTextField
+              tag='input'
+              label='Пароль'
+              // disabled={isLoading}
+              // error={getError("password")}
+              {...register("password", {required: true,})}
+              {...field}
+            />
+          )}
+        />
+          {/* <PasswordTextField
             variant="filled"
-            label="Телефон"
+            label="Пароль"
             {...register("password", { required: true })}
-          />
+          /> */}
           {errors.password && (
             <span className="text-red-500">Обязательно для заполнения</span>
           )}

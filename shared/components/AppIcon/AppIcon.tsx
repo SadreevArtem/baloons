@@ -48,6 +48,18 @@ const Favorite = dynamic(() => import("./components/Favorite").then((module) => 
 const Cart = dynamic(() => import("./components/Cart").then((module) => module.Cart), {
   ssr: false
 });
+const PasswordHide = dynamic(
+  () => import("./components/PasswordHide").then((module) => module.PasswordHide),
+  {
+    ssr: false
+  }
+);
+const PasswordShow = dynamic(
+  () => import("./components/PasswordShow").then((module) => module.PasswordShow),
+  {
+    ssr: false
+  }
+);
 
 type Props = {
   type: IconType;
@@ -67,6 +79,8 @@ const icons: Record<IconType, (className: string) => ReactNode> = {
   search: (className) => <Search className={className} />,
   favorite: (className) => <Favorite className={className} />,
   cart: (className) => <Cart className={className} />,
+  "password-hide": (className) => <PasswordHide className={className} />,
+  "password-show": (className) => <PasswordShow className={className} />,
 };
 
 export const AppIcon: React.FC<Props> = ({ type, className = "" }) => {
