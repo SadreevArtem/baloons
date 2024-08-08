@@ -1,4 +1,4 @@
-export type CategoryName = 'all' | 'out' | 'girl' | 'boy' | 'girlfriend' | 'man' | 'photozone'
+export type CategoryName = 'all' | 'out' | 'girl' | 'boy' | 'girlfriend' | 'man' | 'photozone' | ''
 
 type Category = {
     id: number;

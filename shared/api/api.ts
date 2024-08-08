@@ -1,4 +1,5 @@
 import { CategoryName } from "../components/Products/static";
+import { Product } from "../types";
 
 class API {
   baseUrl: string;
@@ -28,11 +29,30 @@ class API {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        
         return data;
       });
   }
+  createProduct = (input: Product, token: string) => {
+    return fetch(`${this.baseUrl}/products`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify(input),
+    });
+  }
+  updateProduct = (input: Product, token: string) => {
+    return fetch(`${this.baseUrl}/products/${input.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify(input),
+    });
+  }
+
 }
 
 export const api = new API('http://localhost:4000')
