@@ -49,7 +49,7 @@ export const ProductsDetail: React.FC<Props> = ({id}) => {
     mutationFn: isEdit? updateProductFunc : createProductFunc,
     onSuccess: () => {
       console.log("Успешно изменено")
-      queryClient.invalidateQueries({ queryKey: getQueryKey(id) }),
+      queryClient.invalidateQueries(),
       router.back()
     },
     onError: () => window.alert("Ошибка на сервере"),

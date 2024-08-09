@@ -8,7 +8,8 @@ export type IconType =
   | "social-youtube"
   | "phone"
   | "search"
-  | "favorite"
   | "cart"
-  |'password-hide'
-  | 'password-show';
+  | "password-hide"
+  | "password-show"
+  | "favorite"
+  | "favorite-outlined";

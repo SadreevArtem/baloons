@@ -3,33 +3,47 @@ import { inter } from "@/pages";
 import { PRODUCTS } from "@/shared/static";
 import { CartItem } from "./components/CartItem";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { TextField } from "@mui/material";
 import { AppPhoneInputMasked } from "../AppPhoneInputMasked";
 import { getMaskedPhoneValidation } from "@/shared/lib";
 import { AppTextField } from "../AppTextField";
+import { useMutation } from "@tanstack/react-query";
+import { api } from "@/shared/api/api";
+import { useRouter } from "next/router";
 
 type Props = {
   title: string;
   className?: string;
 }
 
-type Inputs = {
+export type Order = {
+  id?: number;
   name: string;
   phone: string;
   adress: string;
   comment: string;
-}
+  createdAt: string;
+};
+
+type Inputs = Order
 
 
 export const CartComponent: React.FC<Props> = ({title, className}) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     watch,
     control,
     formState: { errors },
-  } = useForm<Inputs>()
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+  } = useForm<Inputs>();
+  const mutation = useMutation( {
+    mutationFn: api.createOrder,
+    onSuccess:  () => {
+      router.back()
+    },
+    onError: () => window.alert("Ошибка авторизации"),
+  })
+  const onSubmit: SubmitHandler<Inputs> = (data) => mutation.mutate(data)
 
   console.log(watch("phone")) // watch input value by passing the name of it
   return (
@@ -53,9 +67,20 @@ export const CartComponent: React.FC<Props> = ({title, className}) => {
             className="md:w-[30%] py-4 flex flex-col md:gap-6 gap-4"
           >
             <h4 className="text-primary text-xl font-semibold">
-             Информация о заказе
+              Информация о заказе
             </h4>
-            <AppTextField tag="input" label="Имя" {...register("name")} />
+            <Controller
+              name="name"
+              control={control}
+              render={({ field }) => (
+                <AppTextField
+                  tag="input"
+                  label="Имя"
+                  {...(register("name"), { required: true })}
+                  {...field}
+                />
+              )}
+            />
             <Controller
               name="phone"
               control={control}
@@ -75,11 +100,28 @@ export const CartComponent: React.FC<Props> = ({title, className}) => {
                 );
               }}
             />
-            <AppTextField tag="input" label="Адрес" {...register("adress")} />
-            <AppTextField
-              tag="textarea"
-              label="Коментарий"
-              {...register("comment")}
+            <Controller
+              name="adress"
+              control={control}
+              render={({ field }) => (
+                <AppTextField
+                  tag="input"
+                  label="Адрес доставки"
+                  {...(register("adress"), { required: true })}
+                  {...field}
+                />
+              )}
+            />
+            <Controller
+              name="comment"
+              control={control}
+              render={({ field }) => (
+                <AppTextField
+                  tag="textarea"
+                  label="Коментарий"
+                  {...register("comment")}
+                />
+              )}
             />
             <input
               type="submit"

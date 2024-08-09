@@ -1,3 +1,4 @@
+import { Order } from "../components/Cart";
 import { CategoryName } from "../components/Products/static";
 import { Product } from "../types";
 
@@ -52,7 +53,27 @@ class API {
       body: JSON.stringify(input),
     });
   }
-
+  getOrders = (token: string) => {
+    return fetch(`${this.baseUrl}/orders`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        return data;
+      });
+  }
+  createOrder = (input: Order) => 
+    fetch(`${this.baseUrl}/orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(input),
+    });
+  
 }
 
 export const api = new API('http://localhost:4000')

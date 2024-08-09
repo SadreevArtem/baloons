@@ -60,6 +60,12 @@ const PasswordShow = dynamic(
     ssr: false
   }
 );
+const FavoriteOutlined = dynamic(
+  () => import("./components/FavoriteOutlined").then((module) => module.FavoriteOutlined),
+  {
+    ssr: false
+  }
+);
 
 type Props = {
   type: IconType;
@@ -81,8 +87,9 @@ const icons: Record<IconType, (className: string) => ReactNode> = {
   cart: (className) => <Cart className={className} />,
   "password-hide": (className) => <PasswordHide className={className} />,
   "password-show": (className) => <PasswordShow className={className} />,
+  "favorite-outlined": (className) => <FavoriteOutlined className={className} />,
 };
 
-export const AppIcon: React.FC<Props> = ({ type, className = "" }) => {
+export const AppIcon: React.FC<Props> = ({ type, className = ""}) => {
   return <>{icons[type](clsx(className, "shrink-0"))}</>;
 };

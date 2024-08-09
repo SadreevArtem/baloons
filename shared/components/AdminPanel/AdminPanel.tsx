@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "../Button";
 import { useAuthStore } from "@/shared/stores/auth";
 import { Products } from "../Products/Products";
+import { Orders } from "../Orders/Orders";
 
 type Props = {
   title: string;
@@ -36,7 +37,7 @@ export const AdminPanel: React.FC<Props> = ({title, className=""})=> {
             </ul>
           </div>
           <div className="w-full">
-            {currentMenu === "products" ? <Products />: <div></div>}
+            {currentMenu === "products" ? <Products />: <Orders />}
           </div>
         </div>
       </div>

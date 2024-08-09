@@ -6,6 +6,7 @@ import { api } from "@/shared/api/api";
 import { useAuthStore } from "@/shared/stores/auth";
 import Link from "next/link";
 import { PasswordTextField } from "../PasswordTextField/PasswordTextField";
+import { AppTextField } from "../AppTextField";
 
 
 type Inputs = {
@@ -40,21 +41,33 @@ export const Login: React.FC = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="md:w-[30%] py-4 flex flex-col md:gap-6 gap-4"
         >
-          <TextField variant="filled" label="Имя" {...register("username")} />
           <Controller
-          name='password'
-          control={control}
-          render={({ field }) => (
-            <PasswordTextField
-              tag='input'
-              label='Пароль'
-              // disabled={isLoading}
-              // error={getError("password")}
-              {...register("password", {required: true,})}
-              {...field}
-            />
-          )}
-        />
+            name="username"
+            control={control}
+            render={({ field }) => (
+              <AppTextField
+                tag="input"
+                label="Имя"
+                {...(register("username"), { required: true })}
+                {...field}
+              />
+            )}
+          />
+
+          <Controller
+            name="password"
+            control={control}
+            render={({ field }) => (
+              <PasswordTextField
+                tag="input"
+                label="Пароль"
+                // disabled={isLoading}
+                // error={getError("password")}
+                {...register("password", { required: true })}
+                {...field}
+              />
+            )}
+          />
           {/* <PasswordTextField
             variant="filled"
             label="Пароль"
@@ -69,7 +82,9 @@ export const Login: React.FC = () => {
           >
             Войти
           </button>
-          <Link className="text-center underline" href='/'>Вернуться на главную</Link>
+          <Link className="text-center underline" href="/">
+            Вернуться на главную
+          </Link>
         </form>
       </div>
     </>
