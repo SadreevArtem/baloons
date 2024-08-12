@@ -14,9 +14,7 @@ export const Products: React.FC = () => {
 
    const [tab, setTab]= useState<CategoryName>("all");
    const getProducts = () => api.getProducts(tab);
-   const {data: products = [], isLoading} = useQuery<Product[]>({queryKey:['products', tab], queryFn: getProducts});
-   console.log(products);
-   
+   const {data: products = [], isLoading} = useQuery<Product[]>({queryKey:['products', tab], queryFn: getProducts});   
 
   return (
     <section className="flex flex-col w-full">

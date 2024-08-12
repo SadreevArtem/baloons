@@ -24,6 +24,13 @@ class API {
         return data;
       });
   }
+  getSelectionsProducts = () => {
+    return fetch(`${this.baseUrl}/products/all/selections`)
+      .then((res) => res.json())
+      .then((data) => {
+        return data;
+      });
+  }
   getProductById = (id: number) => {
     return fetch(
       `${this.baseUrl}/products/${id}`
@@ -32,6 +39,11 @@ class API {
       .then((data) => {
         return data;
       });
+  }
+  getProductsByIds(ids: number[]) {
+    return Promise.all(ids.map((id: number) => fetch(`${this.baseUrl}/products/${id}`, {
+      method: 'GET',
+    }).then((res) => res.json())))
   }
   createProduct = (input: Product, token: string) => {
     return fetch(`${this.baseUrl}/products`, {
