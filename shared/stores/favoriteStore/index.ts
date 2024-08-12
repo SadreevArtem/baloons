@@ -10,12 +10,27 @@ export type FavoriteState = {
 
 export const useFavoriteStore = create<FavoriteState>(
   (set): FavoriteState => ({
-    favorite: [],
+    favorite:
+      typeof window !== "undefined"
+        ? JSON.parse(window.localStorage.getItem("favorite") || "[]")
+        : [],
     addFavorite: (id: number) =>
-      set((state) => ({ favorite: [...state.favorite, id] })),
+      set((state) => {
+        const updatedFavorite = [...state.favorite, id];
+        window.localStorage.setItem(
+          "favorite",
+          JSON.stringify(updatedFavorite)
+        );
+        return { favorite: updatedFavorite };
+      }),
     removeFavorite: (id: number) =>
       set((state) => {
-        return { favorite: [...state.favorite.filter((item) => item !== id)] };
+        const updatedFavorite = state.favorite.filter((item) => item!== id);
+        window.localStorage.setItem(
+          "favorite",
+          JSON.stringify(updatedFavorite)
+        );
+        return { favorite: updatedFavorite };
       }),
   })
 );

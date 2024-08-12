@@ -40,7 +40,7 @@ export const ProductCard: React.FC<Props> = ({item}) => {
         <span className="text-primary text-lg font-extrabold max-md:px-2">
           {item.currentPrice} руб.
         </span>
-        <Link href="">
+        <Link href={`/catalog/${item.id}`}>
           <Button title="Подробнее" />
         </Link>
         <button

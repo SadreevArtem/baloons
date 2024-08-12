@@ -7,6 +7,8 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { Hamburger } from "../Hamburger";
 import { HEADER_MENU } from "../Hamburger/static";
 import clsx from "clsx";
+import { useFavoriteStore } from "@/shared/stores/favoriteStore";
+import { useCartStore } from "@/shared/stores/cartStore";
 
 export const Header: React.FC = () => {
   const [hamburgerActive, setHamburgerActive] = useState(false);
@@ -19,6 +21,8 @@ export const Header: React.FC = () => {
     setHamburgerActive(false);
     document.body.style.removeProperty("overflow");
   };
+  const favoriteCount = useFavoriteStore((state) => state.favorite.length);
+  const cartCount = useCartStore((state) => state.cart.reduce((total, item) => total + item.quantity, 0));
   return (
     <header
       className={`${inter.className} opacity-75 md:p-4 p-3 header-scroll fixed top-0 z-10 bg-white w-full`}
@@ -45,13 +49,19 @@ export const Header: React.FC = () => {
               </div>
             </li>
             <li>
-              <Link className="header-link" href="/favorite">
+              <Link className="header-link relative" href="/favorite">
                 <AppIcon type="favorite" />
+                <div className={clsx({ hidden: favoriteCount < 1 }, 'absolute top-[-3px] right-[-10px] rounded-[50%] w-4 h-4 bg-red-400 text-[12px] text-center text-white flex items-center justify-center')}>
+                  <span className="block">{favoriteCount}</span>
+                </div>
               </Link>
             </li>
             <li>
-              <Link className="header-link" href="/cart">
+              <Link className="header-link relative" href="/cart">
                 <AppIcon type="cart" />
+                <div className={clsx('absolute top-[-3px] right-[-10px] rounded-[50%] w-4 h-4 bg-red-400 text-[12px] text-center text-white flex items-center justify-center',{ hidden: cartCount < 1 })}>
+                  <span className="block">{cartCount}</span>
+                </div>
               </Link>
             </li>
             <li className={`self-center ml-6 ${inter.className} max-md:hidden`}>

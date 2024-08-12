@@ -13,3 +13,7 @@ export type Product = {
     tags: string[],
     categories: CategoryName,
 }
+export type CartItem = {
+  product: Product,
+  quantity: number,
+};
