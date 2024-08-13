@@ -9,6 +9,7 @@ import { Button } from "../Button";
 import { useRouter } from "next/router";
 import { CategoryName } from "../Products/static";
 import Image from "next/image";
+import { appToast } from "../AppToast/components/lib/appToast";
 
 
 type Props = {
@@ -24,7 +25,7 @@ export const ProductsDetail: React.FC<Props> = ({id}) => {
     const getProductById = () => api.getProductById(id);
     const getQueryKey = (id: number) => ['product'].concat(id.toString());
     const router = useRouter();
-    const [category, setCategory] = React.useState<CategoryName>('');
+    const [category, setCategory] = React.useState<CategoryName>('all');
     
   const handleChange = (event: SelectChangeEvent) => {
     setCategory(event.target.value as CategoryName);
@@ -48,12 +49,26 @@ export const ProductsDetail: React.FC<Props> = ({id}) => {
   const mutation = useMutation( {
     mutationFn: isEdit? updateProductFunc : createProductFunc,
     onSuccess: () => {
-      console.log("Успешно изменено")
+      appToast.success(isEdit ? "Успешно изменено" : "Успешно добавлено");
       queryClient.invalidateQueries(),
       router.back()
     },
-    onError: () => window.alert("Ошибка на сервере"),
+    onError: () => {
+      appToast.error("Произошла ошибка");
+    },
   })
+  const deleteMutation  = useMutation( {
+    mutationFn: ()=> api.deleteProduct(id, token),
+    onSuccess: () => {
+      appToast.success("Успешно удалено");
+      queryClient.invalidateQueries(),
+      router.back()
+    },
+    onError: () => {
+      appToast.error("Произошла ошибка");
+    },
+  })
+  const onDeleteClick = () => deleteMutation.mutate();
   const onSubmit: SubmitHandler<Inputs> = (data) => mutation.mutate({...data, categories: category,oldPrice: +data.oldPrice, currentPrice: +data.currentPrice });
   useEffect(() => {
     if (!product) return;
@@ -75,99 +90,111 @@ export const ProductsDetail: React.FC<Props> = ({id}) => {
             <Button onButtonClick={() => router.back()} title="Назад"></Button>
           </div>
           <div className="flex justify-between">
-
-          
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="md:w-[50%] py-4 flex flex-col md:gap-6 gap-4"
-          >
-            <TextField
-              variant="outlined"
-              label="Наименование"
-              {...register("name")}
-            />
-            <TextField
-              variant="outlined"
-              multiline
-              label="Описание"
-              {...register("description")}
-            />
-            <TextField
-              variant="outlined"
-              label="Ссылка на изображение"
-              {...register("image", { required: true })}
-            />
-            {errors.image && (
-              <span className="text-red-500">Обязательно для заполнения</span>
-            )}
-            <TextField
-              variant="outlined"
-              label="Текущая цена"
-              {...register("currentPrice", { required: true })}
-            />
-            {errors.currentPrice && (
-              <span className="text-red-500">Обязательно для заполнения</span>
-            )}
-            <TextField
-              variant="outlined"
-              label="Старая цена"
-              {...register("oldPrice", { required: true })}
-            />
-            {errors.oldPrice && (
-              <span className="text-red-500">Обязательно для заполнения</span>
-            )}
-            <Controller
-              name="isSale"
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <FormControlLabel
-                  control={<Switch checked={value}/>}
-                  label="На распродаже"
-                  onChange={onChange}
-    
-                  value={value}
-                />
-              )}
-            />
-            <Controller
-              name="isSelection"
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <FormControlLabel
-                  control={<Switch checked={value}/>}
-                  label="На главной странице"
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
-            />
-
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Категория</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={category}
-                label="Категория"
-                onChange={handleChange}
-              >
-                <MenuItem value={""}>Без категории</MenuItem>
-                <MenuItem value={"out"}>На выписку</MenuItem>
-                <MenuItem value={"girl"}>Девочке</MenuItem>
-                <MenuItem value={"boy"}>Мальчику</MenuItem>
-                <MenuItem value={"girlfriend"}>Девушке</MenuItem>
-                <MenuItem value={"man"}>Мужчине</MenuItem>
-                <MenuItem value={"photozone"}>Фотозона</MenuItem>
-              </Select>
-            </FormControl>
-            <button
-              className="bg-[#d1baba] text-lg px-4 h-[42px] rounded-2 text-white self-center"
-              type="submit"
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="md:w-[50%] py-4 flex flex-col md:gap-6 gap-4"
             >
-              Сохранить
-            </button>
-          </form>
-          <Image className="py-4 w-[240px] h-[360px]" alt='' src={watch('image')} width={300} height={20}/>
+              <TextField
+                variant="outlined"
+                label="Наименование"
+                {...register("name")}
+              />
+              <TextField
+                variant="outlined"
+                multiline
+                label="Описание"
+                {...register("description")}
+              />
+              <TextField
+                variant="outlined"
+                label="Ссылка на изображение"
+                {...register("image", { required: true })}
+              />
+              {errors.image && (
+                <span className="text-red-500">Обязательно для заполнения</span>
+              )}
+              <TextField
+                variant="outlined"
+                label="Текущая цена"
+                {...register("currentPrice", { required: true })}
+              />
+              {errors.currentPrice && (
+                <span className="text-red-500">Обязательно для заполнения</span>
+              )}
+              <TextField
+                variant="outlined"
+                label="Старая цена"
+                {...register("oldPrice", { required: true })}
+              />
+              {errors.oldPrice && (
+                <span className="text-red-500">Обязательно для заполнения</span>
+              )}
+              <Controller
+                name="isSale"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <FormControlLabel
+                    control={<Switch checked={value} />}
+                    label="На распродаже"
+                    onChange={onChange}
+                    value={value}
+                  />
+                )}
+              />
+              <Controller
+                name="isSelection"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <FormControlLabel
+                    control={<Switch checked={value} />}
+                    label="На главной странице"
+                    onChange={onChange}
+                    value={value}
+                  />
+                )}
+              />
+
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Категория</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={category}
+                  label="Категория"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={""}>Без категории</MenuItem>
+                  <MenuItem value={"out"}>На выписку</MenuItem>
+                  <MenuItem value={"girl"}>Девочке</MenuItem>
+                  <MenuItem value={"boy"}>Мальчику</MenuItem>
+                  <MenuItem value={"girlfriend"}>Девушке</MenuItem>
+                  <MenuItem value={"man"}>Мужчине</MenuItem>
+                  <MenuItem value={"photozone"}>Фотозона</MenuItem>
+                </Select>
+              </FormControl>
+              <div className="flex gap-4">
+                <button
+                  className="bg-[#d1baba] text-lg px-4 h-[42px] rounded-2 text-white self-center"
+                  type="submit"
+                >
+                  Сохранить
+                </button>
+                <button
+                  className="bg-[#f59090] text-lg px-4 h-[42px] rounded-2 text-white self-center"
+                  type="button"
+                  onClick={onDeleteClick}
+                >
+                  Удалить
+                </button>
+              </div>
+            </form>
+            <Image
+              className="py-4 w-[240px] h-[360px]"
+              alt=""
+              src={watch("image")}
+              width={300}
+              height={20}
+            />
           </div>
         </section>
       )}

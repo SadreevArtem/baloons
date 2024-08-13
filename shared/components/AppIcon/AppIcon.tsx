@@ -66,6 +66,13 @@ const FavoriteOutlined = dynamic(
     ssr: false
   }
 );
+const Check = dynamic(() => import("./components/Check").then((module) => module.Check), {
+  ssr: false
+});
+
+const Block = dynamic(() => import("./components/Block").then((module) => module.Block), {
+  ssr: false
+});
 
 type Props = {
   type: IconType;
@@ -88,6 +95,8 @@ const icons: Record<IconType, (className: string) => ReactNode> = {
   "password-hide": (className) => <PasswordHide className={className} />,
   "password-show": (className) => <PasswordShow className={className} />,
   "favorite-outlined": (className) => <FavoriteOutlined className={className} />,
+  check: (className) => <Check className={className} />,
+  block: (className) => <Block className={className} />,
 };
 
 export const AppIcon: React.FC<Props> = ({ type, className = ""}) => {

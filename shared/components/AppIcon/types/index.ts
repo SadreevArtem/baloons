@@ -12,4 +12,6 @@ export type IconType =
   | "password-hide"
   | "password-show"
   | "favorite"
+  | "check"
+  | "block"
   | "favorite-outlined";

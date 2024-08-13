@@ -5,140 +5,49 @@ export const MetaData = {
   description: "Воздушные шары в Тюмени с доставкой можно купить в студии Шарбокс. Заказать гелиевые шарики и фигуры как подарок на день рождения и украшение праздника."
 };
 
-export const PRODUCTS: Product[] = [
-  {
-    id: 1,
-    name: "Композиция 1",
-    image: "/images/products/product.jpg",
-    currentPrice: 900,
-    oldPrice: 1000,
-    isSale: false,
-    isSelection: true,
-    published: true,
-    tags: ["girl"],
-    categories: "out",
-  },
-  {
-    id: 2,
-    name: "Композиция 2",
-    image: "/images/products/product.jpg",
-    currentPrice: 900,
-    oldPrice: 1000,
-    isSale: false,
-    isSelection: true,
-    published: true,
-    tags: ["girl"],
-    categories: "out",
-  },
-  {
-    id: 3,
-    name: "Композиция 3",
-    image: "/images/products/product.jpg",
-    currentPrice: 900,
-    oldPrice: 1000,
-    isSale: false,
-    isSelection: true,
-    published: true,
-    tags: ["girl"],
-    categories: "out",
-  },
-  {
-    id: 4,
-    name: "Композиция 4",
-    image: "/images/products/product.jpg",
-    currentPrice: 900,
-    oldPrice: 1000,
-    isSale: false,
-    isSelection: true,
-    published: true,
-    tags: ["girl"],
-    categories: "out",
-  },
-  {
-    id: 5,
-    name: "Композиция 5",
-    image: "/images/products/product.jpg",
-    currentPrice: 900,
-    oldPrice: 1000,
-    isSale: false,
-    isSelection: true,
-    published: true,
-    tags: ["girl"],
-    categories: "out",
-  },
-  {
-    id: 6,
-    name: "Композиция 6",
-    image: "/images/products/product.jpg",
-    currentPrice: 900,
-    oldPrice: 1000,
-    isSale: false,
-    isSelection: true,
-    published: true,
-    tags: ["girl"],
-    categories: "out",
-  },
-  {
-    id: 7,
-    name: "Композиция 7",
-    image: "/images/products/product.jpg",
-    currentPrice: 900,
-    oldPrice: 1000,
-    isSale: false,
-    isSelection: true,
-    published: true,
-    tags: ["girl"],
-    categories: "out",
-  },
-  {
-    id: 8,
-    name: "Композиция 8",
-    image: "/images/products/product.jpg",
-    currentPrice: 900,
-    oldPrice: 1000,
-    isSale: false,
-    isSelection: true,
-    published: true,
-    tags: ["girl"],
-    categories: "out",
-  }
-];
 
 export const CATEGORIES = [
   {
     id: 1,
     name: "Акции",
-    image: "images/categories/category.jpeg"
+    image: "images/categories/category.jpeg",
+    href: "/sales",
   },
   {
     id: 2,
     name: "Выписка",
-    image: "images/categories/out.jpg"
+    image: "images/categories/out.jpg",
+    href: "/out",
   },
   {
     id: 3,
     name: "Девочке",
-    image: "images/categories/girl.jpg"
+    image: "images/categories/girl.jpg",
+    href: "/girls",
   },
   {
     id: 4,
     name: "Мальчику",
-    image: "images/categories/boy.jpg"
+    image: "images/categories/boy.jpg",
+    href: "/boys",
   },
   {
     id: 5,
     name: "Девушке",
-    image: "images/categories/girlfriend.jpg"
+    image: "images/categories/girlfriend.jpg",
+    href: "/girlfriends",
   },
   {
     id: 6,
     name: "Мужчине",
-    image: "images/categories/man.jpg"
+    image: "images/categories/man.jpg",
+    href: "/men",
   },
   {
     id: 7,
     name: "Фотозона",
-    image: "images/categories/photozone.jpg"
+    image: "images/categories/photozone.jpg",
+    href: "/photozones",
   }
 ]
 
@@ -177,7 +86,7 @@ export const CATALOG = [
     id: 7,
     name: "Фотозона",
     href: "/photozones",
-  }
+  },
 ];
 
 export const accordeonItems = [

@@ -5,12 +5,14 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { AppPhoneInputMasked } from "../AppPhoneInputMasked";
 import { getMaskedPhoneValidation } from "@/shared/lib";
 import { AppTextField } from "../AppTextField";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { api } from "@/shared/api/api";
 import { useRouter } from "next/router";
-import { Product } from "@/shared/types";
 import { useCartStore } from "@/shared/stores/cartStore";
 import Link from "next/link";
+import { getErrorMessage } from "@/shared/lib/getError";
+import { appToast } from "../AppToast/components/lib/appToast";
+
 
 type Props = {
   title: string;
@@ -32,21 +34,24 @@ type Inputs = Order
 
 export const CartComponent: React.FC<Props> = ({title, className}) => {
   const router = useRouter();
+
   const clearCart = useCartStore((state) => state.clearCart);
   const {
-    register,
     handleSubmit,
     control,
     formState: { errors },
   } = useForm<Inputs>();
-  const mutation = useMutation( {
+  const mutation = useMutation({
     mutationFn: api.createOrder,
-    onSuccess:  () => {
-      router.push('/'),
-      clearCart()
+    onSuccess: () => {
+      appToast.success("Заказ отправлен успешно!");
+       router.push("/"), clearCart();
     },
-    onError: () => window.alert("Ошибка авторизации"),
-  })
+    onError: ()=>{
+      appToast.error("Произошла ошибка");
+    },
+  });
+  const getError = getErrorMessage(errors);
   const cart = useCartStore((state) => state.cart);
   const totalPrice = cart.reduce(
     (total, item) => total + item.product.currentPrice * item.quantity,
@@ -62,6 +67,7 @@ export const CartComponent: React.FC<Props> = ({title, className}) => {
       ...data,
       orderString,
     });
+
   return (
     <>
       <section
@@ -79,18 +85,17 @@ export const CartComponent: React.FC<Props> = ({title, className}) => {
                 <CartItemComponent item={product} key={product.product.name} />
               ))
             ) : (
-              
-                <div className="flex flex-col items-center">
-                  <h2 className="text-primary text-xl text-center">
-                    Корзина пуста
-                  </h2>
-                  <Link
-                    className="text-primary underline text-lg md:mt-8 mt-2 block"
-                    href="/"
-                  >
-                    Перейти к выбору товаров
-                  </Link>
-                </div>
+              <div className="flex flex-col items-center">
+                <h2 className="text-primary text-xl text-center">
+                  Корзина пуста
+                </h2>
+                <Link
+                  className="text-primary underline text-lg md:mt-8 mt-2 block"
+                  href="/catalog"
+                >
+                  Перейти к выбору товаров
+                </Link>
+              </div>
             )}
           </div>
           {!!cart.length && (
@@ -104,15 +109,21 @@ export const CartComponent: React.FC<Props> = ({title, className}) => {
               <Controller
                 name="name"
                 control={control}
+                rules={{ required: true, minLength: 2, maxLength: 50 }}
                 render={({ field }) => (
                   <AppTextField
                     tag="input"
                     label="Имя"
-                    {...(register("name"), { required: true })}
+                    required
+                    error={getError("name")}
+                    // {...(register("name"), { required: true })}
                     {...field}
                   />
                 )}
               />
+              {errors.name && (
+                <span className="text-red-500">Обязательно для заполнения</span>
+              )}
               <Controller
                 name="phone"
                 control={control}
@@ -127,23 +138,30 @@ export const CartComponent: React.FC<Props> = ({title, className}) => {
                       // disabled={isLoading}
                       onChange={onChange}
                       label="Номер телефона"
-                      // error={getError("phone")}
+                      error={getError("phone")}
                     />
                   );
                 }}
               />
+
               <Controller
                 name="adress"
                 control={control}
+                rules={{ required: true, minLength: 2, maxLength: 50 }}
                 render={({ field }) => (
                   <AppTextField
                     tag="input"
+                    required
+                    error={getError("adress")}
                     label="Адрес доставки"
-                    {...(register("adress"), { required: true })}
+                    // {...(register("adress"), { required: true })}
                     {...field}
                   />
                 )}
               />
+              {errors.adress && (
+                <span className="text-red-500">Обязательно для заполнения</span>
+              )}
               <Controller
                 name="comment"
                 control={control}
@@ -151,18 +169,20 @@ export const CartComponent: React.FC<Props> = ({title, className}) => {
                   <AppTextField
                     tag="textarea"
                     label="Коментарий"
-                    {...register("comment")}
+                    // {...register("comment")}
+                    {...field}
                   />
                 )}
               />
               <span className="text-primary text-xl">{`Итого: ${totalPrice} руб.`}</span>
               <input
                 type="submit"
-                className="bg-[#d1baba] text-lg px-4 h-[42px] rounded-2 text-white self-center"
+                className="bg-[#d1baba] text-lg px-4 h-[42px] rounded-2 text-white self-center cursor-pointer"
               />
             </form>
           )}
         </div>
+      
       </section>
     </>
   );

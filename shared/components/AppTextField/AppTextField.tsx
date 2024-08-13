@@ -51,7 +51,7 @@ export const AppTextField: React.FC<AppTextFieldProps> = ({
             "pt-2 md:pt-3 pl-4 pb-2 !left-[1px] !top-[1px] right-2 md:right-5 bg-white rounded-3":
               props.tag === "textarea",
             "!bg-gray-5": props.tag === "textarea" && props.disabled,
-            "text-danger": error
+            "text-red-500": error
           })}
         >
           {label}
@@ -75,14 +75,14 @@ export const AppTextField: React.FC<AppTextFieldProps> = ({
                 "absolute top-[18px] md:top-[24px] right-[16px] text-primary hover:cursor-pointer",
                 {
                   "!text-gray hover:cursor-auto": props.disabled,
-                  "!text-danger": !props.disabled && error
+                  "!text-red-500": !props.disabled && error
                 }
               )}
             >
               {suffix}
             </div>
           )}
-          {error && <div className='text-danger text-xs mt-1'>{error}</div>}
+          {error && <div className='text-red-500 mt-1'>{error}</div>}
         </>
       ) : (
         <>
@@ -95,7 +95,7 @@ export const AppTextField: React.FC<AppTextFieldProps> = ({
               commonClassNames
             )}
           />
-          {error && <div className='text-danger text-xs'>{error}</div>}
+          {error && <div className='text-red-500'>{error}</div>}
         </>
       )}
     </label>

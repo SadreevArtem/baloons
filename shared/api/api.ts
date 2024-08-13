@@ -31,6 +31,13 @@ class API {
         return data;
       });
   }
+  getSalesProducts = () => {
+    return fetch(`${this.baseUrl}/products/all/sales`)
+      .then((res) => res.json())
+      .then((data) => {
+        return data;
+      });
+  }
   getProductById = (id: number) => {
     return fetch(
       `${this.baseUrl}/products/${id}`
@@ -63,6 +70,15 @@ class API {
         "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify(input),
+    });
+  }
+  deleteProduct = (id: number, token: string) => {
+    return fetch(`${this.baseUrl}/products/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
     });
   }
   getOrders = (token: string) => {

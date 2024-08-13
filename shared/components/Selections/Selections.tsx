@@ -14,7 +14,6 @@ type Props = {
 export const Selections: React.FC<Props> = ({title, className}) => {
 
   const {data: products = [], isLoading} = useQuery<Product[]>({queryKey:['products'], queryFn:   () => api.getSelectionsProducts()});   
-console.log(products);
 
   return (
     <>

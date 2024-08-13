@@ -1,4 +1,4 @@
-export type CategoryName = 'all' | 'out' | 'girl' | 'boy' | 'girlfriend' | 'man' | 'photozone' | ''
+export type CategoryName = 'all' | 'out' | 'girl' | 'boy' | 'girlfriend' | 'men' | 'photozone' | ''
 
 type Category = {
     id: number;
@@ -34,12 +34,12 @@ export const category: Category[] = [
     },
     {
         id:6,
-        categoryName: 'man',
+        categoryName: 'men',
         value: "Мужчине"
     },
     {
         id:7,
         categoryName: 'photozone',
         value: "Фотозона"
-    }
+    },
 ]

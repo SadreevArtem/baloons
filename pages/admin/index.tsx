@@ -1,4 +1,5 @@
 import { AdminPanel } from "@/shared/components/AdminPanel/AdminPanel";
+import { AppToast } from "@/shared/components/AppToast";
 import { Login } from "@/shared/components/Login/Login";
 import { useAuthStore } from "@/shared/stores/auth";
 import { Poiret_One } from "next/font/google";
@@ -13,6 +14,7 @@ export default function Admin() {
       <div className={`h-[100vh]${inter.className}`}>
         {!isAuth ? <Login /> : <AdminPanel title="Управление контентом" />}
       </div>
+      <AppToast />
     </>
   );
 }
