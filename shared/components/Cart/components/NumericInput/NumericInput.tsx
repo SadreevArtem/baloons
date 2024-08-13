@@ -4,39 +4,32 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Button } from "../Button";
 import styles from "./NumericInput.module.css";
+import { CartItem } from "@/shared/types";
+import { useCartStore } from "@/shared/stores/cartStore";
 
 type Props = {
   max?: number | string;
   min?: number | string;
   value?: number;
+  item: CartItem 
 } & TextFieldProps;
 
 export const NumericInput: React.FC<Props> = ({
   max = Infinity,
   min = 0,
   value = 0,
-  onChange,
+  item,
   name,
   ...props
 }) => {
+  const addCart = useCartStore((state) => state.addCart);
+  const removeCart = useCartStore((state) => state.removeCart);
   const handleAdd = () => {
-    onChange?.({
-      target: {
-        value: Math.min(+max, +(value || 0) + 1),
-        name: name ?? ""
-      }
-    } as unknown as ChangeEvent<HTMLInputElement>);
+    addCart(item.product);
   };
 
   const handleRemove = () => {
-    onChange?.({
-      target: {
-        value: Number.isInteger(min)
-          ? Math.max(min as number, +(value || 0) - 1)
-          : +(value || 0) - 1,
-        name: name ?? ""
-      }
-    } as unknown as ChangeEvent<HTMLInputElement>);
+    removeCart(item.product);
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -49,8 +42,6 @@ export const NumericInput: React.FC<Props> = ({
     ) {
       return;
     }
-
-    onChange?.(e);
   };
 
   const buttonColor = props.error ? "error" : "primary";

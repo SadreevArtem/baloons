@@ -6,6 +6,7 @@ export type CartState = {
     addCart: (item: Product) => void;
     removeCart: (item: Product) => void;
     clearCart: () => void;
+    deleteItem: (itemId: number) => void;
 };
 
 export const useCartStore = create<CartState>(
@@ -54,6 +55,11 @@ export const useCartStore = create<CartState>(
         window.localStorage.setItem("cart", JSON.stringify(updatedCart));
         return { cart: updatedCart };
       }),
+    deleteItem: (itemId: number) => set((state) => {
+      const updatedCart = state.cart.filter((item) => item.product.id!== itemId);
+      window.localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return { cart: updatedCart };
+    }),
     clearCart: () =>
       set(() => {
         window.localStorage.removeItem("cart");
