@@ -7,6 +7,7 @@ import { Categories } from "@/shared/components/Categories";
 import { Selections } from "@/shared/components/Selections";
 import { ReactElement } from "react";
 import { BaseLayout } from "@/layouts/BaseLayout/BaseLayout";
+import { Header } from "@/shared/components/Header/Header";
 
 export const inter = Poiret_One({weight: "400", subsets: ['cyrillic']});
 
@@ -14,7 +15,7 @@ const Home = ()=> {
   return (
     <>
       <AppHead title={MetaData.title} description={MetaData.description} />
-
+      <Header />
       <div className={`flex flex-col justify-between ${inter.className}`}>
         <Author
           images={[

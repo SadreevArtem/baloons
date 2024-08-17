@@ -9,6 +9,7 @@ import { HEADER_MENU } from "../Hamburger/static";
 import clsx from "clsx";
 import { useFavoriteStore } from "@/shared/stores/favoriteStore";
 import { useCartStore } from "@/shared/stores/cartStore";
+import { HeaderSearch } from "../HeaderSearch";
 
 export const Header: React.FC = () => {
   const [hamburgerActive, setHamburgerActive] = useState(false);
@@ -16,7 +17,6 @@ export const Header: React.FC = () => {
     setHamburgerActive(true);
     document.body.style.overflow = "hidden";
   };
-
   const onClose = () => {
     setHamburgerActive(false);
     document.body.style.removeProperty("overflow");
@@ -39,13 +39,13 @@ export const Header: React.FC = () => {
           </div>
         </Link>
         <nav className="flex items-center gap-4">
-          <ul className="flex md:gap-4 gap-2">
+          <ul className="flex md:gap-4 gap-2 items-center">
             <li>
               <div
                 className="header-link"
                 onClick={() => scrolltoHash("price")}
               >
-                <AppIcon type="search" />
+                <HeaderSearch className="max-md:hidden"/>
               </div>
             </li>
             <li>

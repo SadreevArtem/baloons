@@ -52,6 +52,21 @@ class API {
       method: 'GET',
     }).then((res) => res.json())))
   }
+  searchProducts = (query: string) => {
+    console.log(JSON.stringify({ query }));
+    
+    return fetch(`${this.baseUrl}/products/search`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({query}),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        return data;
+      });
+  }
   createProduct = (input: Product, token: string) => {
     return fetch(`${this.baseUrl}/products`, {
       method: "POST",

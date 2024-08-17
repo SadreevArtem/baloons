@@ -9,6 +9,7 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import { dehydrate, QueryClient, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Product } from "@/shared/types";
 import { api } from "@/shared/api/api";
+import { Header } from "@/shared/components/Header/Header";
 ;
 
 export const inter = Poiret_One({weight: "400", subsets: ['cyrillic']});
@@ -33,6 +34,7 @@ const ProductDetailClient = ({item}: InferGetServerSidePropsType<typeof getServe
   return (
     <>
       <AppHead title={''} description="" />
+      <Header />
       <div className={`flex flex-col justify-between ${inter.className}`}>
       <div className={`h-[100vh]${inter.className}`}>
         <DetailProductsClient item={item} />
