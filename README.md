@@ -11,7 +11,7 @@ yarn dev
 # or
 pnpm 
 
-devgoogle-site-verification=BvZPzWVIJvmfZAlbQjzIBPAI5pZJn4Oma6Qgb8-uedA
+google-site-verification=BvZPzWVIJvmfZAlbQjzIBPAI5pZJn4Oma6Qgb8-uedA
 
 
 # or
