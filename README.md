@@ -9,9 +9,16 @@ npm run dev
 # or
 yarn dev
 # or
-pnpm dev
+pnpm 
+
+devgoogle-site-verification=BvZPzWVIJvmfZAlbQjzIBPAI5pZJn4Oma6Qgb8-uedA
+
+
 # or
 bun dev
+
+
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
